@@ -1,3 +1,11 @@
+let gameCount = 0;
+let playerWin = 0;
+let computerWin = 0;
+
+function getPlayerChoice(){
+  return prompt("Rock, Paper, or Scissors?");
+};
+
 function getComputerChoice(){
   const choices = ["Rock", "Paper", "Scissors"]
   const randomIndex = Math.floor(Math.random() * 3)
@@ -5,7 +13,7 @@ function getComputerChoice(){
 };
 
 function normalizeString(string) {
-  return string.toLowerCase().charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 function winOrLoseString(computerSelection, playerSelection){
@@ -45,9 +53,30 @@ function winOrLoseString(computerSelection, playerSelection){
   }
 }
 
-function playGame(computerSelection, playerSelection){
+function playRound(computerSelection, playerSelection){
   playerSelection = normalizeString(playerSelection); 
   return winOrLoseString(computerSelection, playerSelection) 
 };
 
-console.log(playGame(getComputerChoice(), getComputerChoice()))
+function game(computerSelection, playerSelection){
+  outcome = playRound(computerSelection, playerSelection);
+  outcome.includes("Win") ? playerWin++ : computerWin++;
+  gameCount++;
+  if(gameCount === 5){
+    if(playerWin > computerWin){
+      return outcome + "\n" + "You won the game!"
+    }else if(playerWin < computerWin) {
+      return outcome + "\n" + "You lost! Try again!"
+    }else {
+      return outcome + "\n" + "Tie game! Try again!"
+    }
+  }else{
+    return outcome;
+  }
+}
+
+console.log(game(getComputerChoice(), getPlayerChoice()))
+console.log(game(getComputerChoice(), getPlayerChoice()))
+console.log(game(getComputerChoice(), getPlayerChoice()))
+console.log(game(getComputerChoice(), getPlayerChoice()))
+console.log(game(getComputerChoice(), getPlayerChoice()))
