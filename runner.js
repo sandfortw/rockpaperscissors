@@ -60,7 +60,12 @@ function playRound(computerSelection, playerSelection){
 
 function game(computerSelection, playerSelection){
   outcome = playRound(computerSelection, playerSelection);
-  outcome.includes("Win") ? playerWin++ : computerWin++;
+  if(outcome.includes("Win")){
+    playerWin++
+  }
+  if(outcome.includes("Lose")){
+    computerWin++
+  }
   gameCount++;
   if(gameCount === 5){
     if(playerWin > computerWin){
@@ -75,8 +80,6 @@ function game(computerSelection, playerSelection){
   }
 }
 
-console.log(game(getComputerChoice(), getPlayerChoice()))
-console.log(game(getComputerChoice(), getPlayerChoice()))
-console.log(game(getComputerChoice(), getPlayerChoice()))
-console.log(game(getComputerChoice(), getPlayerChoice()))
-console.log(game(getComputerChoice(), getPlayerChoice()))
+for(let x = 0; x < 5; x++){
+  console.log(game(getComputerChoice(), getPlayerChoice()))
+}
