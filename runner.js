@@ -9,7 +9,7 @@ function getComputerChoice() {
   const choice_display = `Computer chose ${choice}`;
   let div = document.createElement('div');
   div.textContent = choice_display;
-  document.querySelector('body').appendChild(div)
+  document.querySelector('#gameplay-info').appendChild(div)
   return choice;
 }
 
@@ -76,16 +76,17 @@ function game(outcome) {
   }
 }
 
-const body = document.querySelector('body')
+const gameplayInfo = document.querySelector('#gameplay-info')
 const buttons = document.querySelectorAll("li button");
 buttons.forEach((button) => {
   button.addEventListener("click", function () {
+    gameplayInfo.innerHTML = '';
     let player_choice_div = document.createElement('div');
     player_choice_div.textContent = `You chose ${button.id}`;
-    document.querySelector('body').appendChild(player_choice_div);
+    gameplayInfo.appendChild(player_choice_div);
     const outcome = playRound(getComputerChoice(), button.id);
     const div = document.createElement('div');
     div.textContent = game(outcome);
-    body.appendChild(div);
+    gameplayInfo.appendChild(div);
   });
 });
