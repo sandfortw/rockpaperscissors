@@ -77,7 +77,7 @@ function winScript(outcome){
   let selectionContainer = document.querySelector('#selection-container')
   let result = document.querySelector('#result')
   selectionContainer.style.visibility = 'hidden';
-  result.textContent = outcome.includes("Win") ? "You won the game!" : "You lost! Try again!"; 
+  result.textContent = outcome.includes("Win") ? "You won the game!" : "You lost! Shoulda picked rock more."; 
   document.querySelector('#play-again').style.visibility = 'visible';
 }
 

@@ -28,3 +28,11 @@ h1, h2 {
   display: flex;
   justify-content: center;
 }
+
+#result-play-again-container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
