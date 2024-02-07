@@ -1,0 +1,30 @@
+* {
+  font-family: Arial, Helvetica, sans-serif; 
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+#buttons {
+  display: flex;
+  list-style-type:none;
+  gap: 10px; 
+  padding: 0;
+  justify-content: center;
+}
+
+#play-again{
+  visibility: hidden;
+}
+
+#scores{
+  display: flex;
+  justify-content: space-around;
+  font-size: larger;
+}
+
+#gameplay-info-flex-container{
+  display: flex;
+  justify-content: center;
+}

@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="runner.js" defer></script>
+  <link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
-<h1 style="text-align: center"> Rock, Paper, Scissors! </h1>
+<h1> Rock, Paper, Scissors! </h1>
 <div id="selection-container">
-  <h2 style="text-align: center"> Make Your Selection: </h2>
-  <ul id='buttons'style="display: flex; list-style-type:none; gap: 4px; justify-content: center;">
+  <h2> Make Your Selection: </h2>
+  <ul id='buttons'>
     <li><button id="rock">Rock</button></li>
     <li><button id="paper">Paper</button></li>
     <li><button id="scissors">Scissors</button></li>
@@ -22,15 +23,17 @@
   <p class="score" id="score-computer">Computer Score: 0</p>
 </div>
 
-<div id="gameplay-info">
+<div id="gameplay-info-flex-container">
+  <div id="gameplay-info">
 
+  </div>
 </div>
 
 <div id="result">
 
 </div>
 
-<button id="play-again" style="visibility:hidden">
+<button id="play-again">
   Play Again?
 </button>
 </body>
