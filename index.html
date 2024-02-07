@@ -8,12 +8,14 @@
 </head>
 <body>
 <h1 style="text-align: center"> Rock, Paper, Scissors! </h1>
-<h2 style="text-align: center"> Make Your Selection: </h2>
-<ul style="display: flex; list-style-type:none; gap: 4px; justify-content: center;">
-  <li><button id="rock">Rock</button></li>
-  <li><button id="paper">Paper</button></li>
-  <li><button id="scissors">Scissors</button></li>
-</ul>
+<div id="selection-container">
+  <h2 style="text-align: center"> Make Your Selection: </h2>
+  <ul id='buttons'style="display: flex; list-style-type:none; gap: 4px; justify-content: center;">
+    <li><button id="rock">Rock</button></li>
+    <li><button id="paper">Paper</button></li>
+    <li><button id="scissors">Scissors</button></li>
+  </ul>
+</div>
 
 <div id="scores">
   <p class="score" id="score-player">Player Score: 0</p> 
@@ -21,7 +23,15 @@
 </div>
 
 <div id="gameplay-info">
-  
+
 </div>
+
+<div id="result">
+
+</div>
+
+<button id="play-again" style="visibility:hidden">
+  Play Again?
+</button>
 </body>
 </html>

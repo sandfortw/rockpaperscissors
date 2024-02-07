@@ -66,14 +66,19 @@ function game(outcome) {
     scoreElement.textContent = `Computer Score: ${computerWin}`
   }
   if (computerWin === 5 || playerWin === 5) {
-    if (playerWin > computerWin) {
-      return outcome + "\n" + "You won the game!";
-    } else {
-      return outcome + "\n" + "You lost! Try again!";
-    }
+    winScript(outcome)
+    return outcome;
   } else {
     return outcome;
   }
+}
+
+function winScript(outcome){
+  let buttons = document.querySelector('#selection-container')
+  let result = document.querySelector('#result')
+  buttons.innerHTML = '';
+  result.textContent = outcome.includes("Win") ? "You won the game!" : "You lost! Try again!"; 
+  document.querySelector('#play-again').style.visibility = 'visible';
 }
 
 const gameplayInfo = document.querySelector('#gameplay-info')
@@ -90,3 +95,9 @@ buttons.forEach((button) => {
     gameplayInfo.appendChild(div);
   });
 });
+
+const playAgainButton = document.querySelector('#play-again')
+
+playAgainButton.addEventListener('click', () => window.location.reload())
+
+
