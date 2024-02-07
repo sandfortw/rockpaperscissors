@@ -4,8 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="runner.js" defer></script>
 </head>
 <body>
-  <script src="runner.js"></script>
+<h1 style="text-align: center"> Rock, Paper, Scissors! </h1>
+<h2 style="text-align: center"> Make Your Selection: </h2>
+<ul style="display: flex; list-style-type:none; gap: 4px; justify-content: center;">
+  <li><button id="rock">Rock</button></li>
+  <li><button id="paper">Paper</button></li>
+  <li><button id="scissors">Scissors</button></li>
+</ul>
+
+<div id="scores">
+  <p class="score" id="score-player">Player Score: 0</p> 
+  <p class="score" id="score-computer">Computer Score: 0</p>
+</div>
 </body>
 </html>

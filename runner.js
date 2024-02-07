@@ -2,84 +2,90 @@ let gameCount = 0;
 let playerWin = 0;
 let computerWin = 0;
 
-function getPlayerChoice(){
-  return prompt("Rock, Paper, or Scissors?");
-};
-
-function getComputerChoice(){
-  const choices = ["Rock", "Paper", "Scissors"]
-  const randomIndex = Math.floor(Math.random() * 3)
-  return choices [randomIndex]
-};
-
-function normalizeString(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+function getComputerChoice() {
+  const choices = ["Rock", "Paper", "Scissors"];
+  const randomIndex = Math.floor(Math.random() * 3);
+  const choice = choices[randomIndex];
+  const choice_display = `Computer chose ${choice}`;
+  let div = document.createElement('div');
+  div.textContent = choice_display;
+  document.querySelector('body').appendChild(div)
+  return choice;
 }
 
-function winOrLoseString(computerSelection, playerSelection){
-  switch(playerSelection) {
-    case "Rock":
-      switch(computerSelection) {
+function winOrLoseString(computerSelection, playerSelection) {
+  switch (playerSelection) {
+    case "rock":
+      switch (computerSelection) {
         case "Rock":
           return "Tie! Rock ties Rock";
         case "Paper":
           return "You Lose! Paper beats Rock!";
         case "Scissors":
           return "You Win! Rock beats Scissors!";
-      };
+      }
       break;
-    case "Paper":
-      switch(computerSelection) {
+    case "paper":
+      switch (computerSelection) {
         case "Rock":
           return "You Win! Paper beats Rock!";
         case "Paper":
           return "Tie! Paper ties Paper";
         case "Scissors":
           return "You Lose! Scissors beats Paper!";
-      };
+      }
       break;
-    case "Scissors":
-      switch(computerSelection) {
+    case "scissors":
+      switch (computerSelection) {
         case "Rock":
           return "You Lose! Rock beats Scissors!";
         case "Paper":
           return "You Win! Scissors beats Paper!";
         case "Scissors":
           return "Tie! Scissors ties Scissors";
-      };
+      }
       break;
-    default: 
-      return "Invalid Input."
+    default:
+      return "Invalid Input.";
   }
 }
 
-function playRound(computerSelection, playerSelection){
-  playerSelection = normalizeString(playerSelection); 
-  return winOrLoseString(computerSelection, playerSelection) 
-};
+function playRound(computerSelection, playerSelection) {
+  return winOrLoseString(computerSelection, playerSelection);
+}
 
-function game(computerSelection, playerSelection){
-  outcome = playRound(computerSelection, playerSelection);
-  if(outcome.includes("Win")){
-    playerWin++
+function game(outcome) {
+  if (outcome.includes("Win")) {
+    playerWin++;
+    const scoreElement = document.querySelector('#score-player');
+    scoreElement.textContent = `Player Score: ${playerWin}`
   }
-  if(outcome.includes("Lose")){
-    computerWin++
+  if (outcome.includes("Lose")) {
+    computerWin++;
+    const scoreElement = document.querySelector('#score-computer');
+    scoreElement.textContent = `Computer Score: ${computerWin}`
   }
-  gameCount++;
-  if(gameCount === 5){
-    if(playerWin > computerWin){
-      return outcome + "\n" + "You won the game!"
-    }else if(playerWin < computerWin) {
-      return outcome + "\n" + "You lost! Try again!"
-    }else {
-      return outcome + "\n" + "Tie game! Try again!"
+  if (computerWin === 5 || playerWin === 5) {
+    if (playerWin > computerWin) {
+      return outcome + "\n" + "You won the game!";
+    } else {
+      return outcome + "\n" + "You lost! Try again!";
     }
-  }else{
+  } else {
     return outcome;
   }
 }
 
-for(let x = 0; x < 5; x++){
-  console.log(game(getComputerChoice(), getPlayerChoice()))
-}
+const body = document.querySelector('body')
+const buttons = document.querySelectorAll("li button");
+buttons.forEach((button) => {
+  button.addEventListener("click", function () {
+    let player_choice_div = document.createElement('div');
+    player_choice_div.textContent = `You chose ${button.id}`;
+    document.querySelector('body').appendChild(player_choice_div);
+    const outcome = playRound(getComputerChoice(), button.id);
+    const div = document.createElement('div');
+    div.textContent = game(outcome);
+    body.appendChild(div);
+  });
+});
